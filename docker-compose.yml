@@ -36,5 +36,5 @@ services:
       - ./mysql/mysql_data:/var/lib/mysql
       - ./mysql/sqls:/docker-entrypoint-initdb.d/
     environment:
-      MYSQL_ROOT_PASSWORD: larrykim
+      MYSQL_ROOT_PASSWORD: larryk
       MYSQL_DATABASE: myapp
