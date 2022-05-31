@@ -21,7 +21,6 @@ after_success:
   - docker push laurel828/docker-frontend
   - docker push laurel828/docker-backend
   - docker push laurel828/docker-nginx
-    
 
 
 
