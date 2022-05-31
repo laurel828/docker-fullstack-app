@@ -1,0 +1,27 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t laurel828/react-test-app -f ./frontend/Dockerfile.dev
+
+script:
+  - docker run -e CI=true laurel828/react-test-app npm run test
+
+after_success:
+  - docker build -t laurel828/docker-frontend ./frontend
+  - docker build -t laurel828/docker-backend ./backend
+  - docker build -t laurel828/docker-nginx ./nginx
+
+  - echo $DOCKER_HUB_PASSWORD | docker login -u "$DOCKER_HUB_ID" --password-stdin
+
+  - docker push laurel828/docker-frontend
+  - docker push laurel828/docker-backend
+  - docker push laurel828/docker-nginx
+    
+
+
+
